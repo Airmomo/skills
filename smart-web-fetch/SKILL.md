@@ -1,6 +1,6 @@
 ---
 name: smart-web-fetch
-description: 智能网页抓取技能 - 替代内置 web_fetch，自动使用 Jina Reader / markdown.new / defuddle.md 清洗服务获取干净 Markdown。支持多级降级策略，大幅降低 Token 消耗。当 Agent 需要获取网页内容时使用本技能替代 web_fetch。
+description: 此 Skill 应在用户要求"获取网页内容"、"抓取网页"、"读取网页"、"抓取 URL 内容"、"替代 web_fetch"、"使用 Jina Reader"、"清洗 HTML"或提及"网页抓取"、"获取 Markdown"时使用。提供智能网页抓取能力，自动使用清洗服务获取干净 Markdown，支持多级降级策略。
 ---
 
 # Smart Web Fetch

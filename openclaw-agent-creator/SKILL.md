@@ -1,6 +1,6 @@
 ---
 name: openclaw-agent-creator
-description: OpenClaw Agent 的标准创建和配置指南。当用户想要创建新的 OpenClaw Agent 或者完善 Agent 的配置时，应该使用此技能。
+description: 此 Skill 应在用户要求"创建 OpenClaw Agent"、"添加新 Agent"、"配置 Agent 工作空间"、"初始化 Agent"、"设置 Agent 人格"、"配置 Agent 工具"、"绑定 Agent 消息平台"或提及"OpenClaw Agent 创建"、"AGENTS.md"、"SOUL.md"时使用。提供 OpenClaw Agent 的标准创建和配置指南。
 ---
 
 # OpenClaw Agent Creator

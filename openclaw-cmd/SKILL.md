@@ -1,6 +1,6 @@
 ---
 name: openclaw-cmd
-description: Comprehensive CLI command reference for OpenClaw - personal AI assistant gateway. Use when users ask about openclaw CLI commands, how to use specific commands, or need help with openclaw command-line operations. Covers setup, gateway, channels, messaging, agents, models, nodes, browser, automation, and utility commands.
+description: 此 Skill 应在用户要求"openclaw 命令"、"OpenClaw CLI"、"openclaw setup"、"openclaw gateway"、"openclaw agents"、"openclaw config"、"查看 openclaw 状态"或询问"如何使用 openclaw"、"openclaw 帮助"时使用。提供 OpenClaw CLI 的完整命令参考，涵盖设置、网关、通道、消息、代理、模型、节点、浏览器、自动化和工具命令。
 ---
 
 # OpenClaw CLI Commands

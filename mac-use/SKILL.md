@@ -1,6 +1,6 @@
 ---
 name: mac-use
-description: Control macOS GUI apps visually — take screenshots, click, scroll, type. Use when the user asks to interact with any Mac desktop application's graphical interface.
+description: 此 Skill 应在用户要求"控制 Mac 应用"、"操作 macOS 界面"、"截图并点击"、"自动化 Mac GUI"、"与桌面应用交互"、"滚动窗口"、"在 Mac 上输入文字"或提及"macOS 可视化操作"、"Apple Vision OCR"时使用。提供通过截图、点击、滚动、输入等方式控制 macOS GUI 应用的能力。
 metadata: {"openclaw":{"emoji":"🖥️","requires":{"bins":["python3"]},"os":["darwin"],"install":[{"id":"python-brew","kind":"brew","formula":"python","bins":["python3"],"label":"Install Python 3 (brew)"}]}}
 ---
 

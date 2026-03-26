@@ -1,6 +1,6 @@
 ---
 name: imap-smtp-email
-description: Read and send email via IMAP/SMTP. Check for new/unread messages, fetch content, search mailboxes, mark as read/unread, and send emails with attachments. Supports multiple accounts. Works with any IMAP/SMTP server including Gmail, Outlook, 163.com, vip.163.com, 126.com, vip.126.com, 188.com, and vip.188.com.
+description: 此 Skill 应在用户要求"读取邮件"、"发送邮件"、"查看新邮件"、"搜索邮箱"、"标记已读"、"添加附件"、"配置邮箱"、"Gmail 操作"、"Outlook 操作"、"163 邮箱操作"、"126 邮箱操作"或提及"IMAP"、"SMTP"、"邮件管理"时使用。提供通过 IMAP/SMTP 读取和发送邮件的能力，支持多种邮箱服务。
 metadata:
   openclaw:
     emoji: "📧"

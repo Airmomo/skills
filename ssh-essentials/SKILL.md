@@ -1,6 +1,6 @@
 ---
 name: ssh-essentials
-description: Essential SSH commands for secure remote access, key management, tunneling, and file transfers.
+description: 此 Skill 应在用户要求"SSH 连接"、"远程访问服务器"、"管理 SSH 密钥"、"设置 SSH 隧道"、"SCP 文件传输"、"SFTP 操作"、"配置 SSH config"、"生成 SSH 密钥对"或提及"端口转发"、"SSH 代理转发"、"X11 转发"时使用。提供 SSH 远程访问、密钥管理、隧道和文件传输的完整命令参考。
 homepage: https://www.openssh.com/
 metadata: {"clawdbot":{"emoji":"🔐","requires":{"bins":["ssh"]}}}
 ---
