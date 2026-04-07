@@ -208,6 +208,6 @@ __marimo__/
 
 # Custom
 .DS_Store
+temp/
 .claude/
-ctv-configer-352/
 cc-skills-soft-install.sh

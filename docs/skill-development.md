@@ -1,4 +1,6 @@
-# Agent Skill 开发指南
+# Skill 开发指南
+
+本指南旨在帮助你快速了解如何创建一个标准、优秀的 Skill。涵盖 Skill 的核心概念、文件结构规范、SKILL.md 编写最佳实践、渐进式加载原则以及常见问题的优化方案。
 
 ## 什么是 Skill
 
@@ -57,8 +59,27 @@ skill-name/
 
 ### Frontmatter 基础字段
 
-- **name** (必需) - Skill 名称
+- **name** (必需) - Skill 名称，**只能包含小写字母、数字和连字符**（`[a-z0-9-]`），推荐与目录名保持一致
 - **description** (必需) - Skill 描述
+
+### name 字段编写规范
+
+`name` 字段只能包含小写字母（`a-z`）、数字（`0-9`）和连字符（`-`），不允许大写字母、空格、下划线或其他特殊字符。推荐 `name` 与 Skill 目录名保持一致。
+
+✅ **正确示例：**
+
+```yaml
+name: hook-development
+name: mcp-integration
+```
+
+❌ **错误示例：**
+
+```
+name: Hook Development
+name: MCP Integration
+name: hook_development
+```
 
 ### description 字段编写规范
 
@@ -83,19 +104,19 @@ description: 当用户要求...时加载此 Skill
 
 ✅ **正确示例（渐进式信息展示，详细内容仅在需要时加载）：**
 
-```
+```markdown
 skill-name/
-├── SKILL.md  (1,800 字 - 核心要素)
+├── SKILL.md (1,800 字 - 核心要素)
 └── references/
-    ├── patterns.md (2,500 字)
-    └── advanced.md (3,700 字)
+├── patterns.md (2,500 字)
+└── advanced.md (3,700 字)
 ```
 
 ❌ **错误示例（Skill 加载时会使上下文膨胀，详细内容始终被加载）：**
 
-```
+```markdown
 skill-name/
-└── SKILL.md  (8,000 字 - 所有内容在一个文件中)
+└── SKILL.md (8,000 字 - 所有内容在一个文件中)
 ```
 
 #### 2. 使用祈使句/不定式形式
@@ -104,7 +125,7 @@ skill-name/
 
 ✅ **正确示例（使用祈使句）：**
 
-```
+```markdown
 创建 hook 时，定义事件类型。
 使用身份验证配置 MCP 服务器。
 在使用前验证设置。
@@ -112,7 +133,7 @@ skill-name/
 
 ❌ **错误示例（使用第二人称）：**
 
-```
+```markdown
 你应该通过定义事件类型来创建 hook。
 你需要配置 MCP 服务器。
 你必须在使用前验证设置。
@@ -122,7 +143,7 @@ skill-name/
 
 ❌ **错误示例（在 SKILL.md 未提及参考资源信息，Agent 不会知道 references/ 存在）：**
 
-```
+```markdown
 # SKILL.md
 
 [核心内容]
@@ -132,7 +153,7 @@ skill-name/
 
 ✅ **正确示例（在 SKILL.md 末尾添加参考资源信息）：**
 
-```
+```markdown
 # SKILL.md
 
 [核心内容]
@@ -148,6 +169,32 @@ skill-name/
 
 - **`examples/script.sh`** - 工作示例
 ```
+
+#### 4. 禁止在 SKILL.md 中使用 `!`` 执行语法
+
+Claude Code 的权限检查器在加载 Skill 时会**静态扫描**所有 `!`` 语法。当命令中包含 `${CLAUDE_PLUGIN_ROOT}` 或 `${CLAUDE_SKILL_DIR}` 等变量展开时，权限检查器无法在静态分析阶段确定展开后的值是否安全，会直接拒绝执行，导致**整个 Skill 加载失败**。
+
+**规则：SKILL.md 中的所有示例代码必须使用普通代码块（` ```bash `）展示，不得使用 `!`` 执行语法。**
+
+✅ **正确示例（普通代码块，纯文本展示，不会被拦截）**
+
+````markdown
+Files changed: ```bash
+git diff --name-only
+````
+
+❌ **错误示例（!` 执行语法，会被权限检查器拦截）**
+
+```markdown
+Files changed: !`git diff --name-only`
+```
+
+**区别说明：**
+
+- `!`` 语法 = 运行时实际执行命令，会被权限检查器静态拦截
+- ` ```bash ` 代码块 = 纯文本展示，不会被拦截
+
+如果 Skill 确实需要在运行时执行 bash 命令，应将 `${CLAUDE_PLUGIN_ROOT}` 等变量替换为硬编码路径，或在 `allowed-tools` 中显式声明允许的命令模式。
 
 ### SKILL.md 模板
 
