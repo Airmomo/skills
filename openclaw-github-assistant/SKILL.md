@@ -1,5 +1,5 @@
 ---
-name: github
+name: openclaw-github-assistant
 description: 此 Skill 应在用户要求"列出 GitHub 仓库"、"查看仓库信息"、"检查 CI 状态"、"创建 GitHub issue"、"搜索仓库"、"查看最近提交"、"获取 GitHub 活动记录"或提及"GitHub 集成"、"管理 GitHub"时使用。提供 GitHub 仓库查询和管理能力。
 metadata:
   openclaw:
