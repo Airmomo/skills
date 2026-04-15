@@ -26,50 +26,24 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 
 ## 技能列表
 
-### Claude Code 官方技能
-
-| 技能                                                  | 简述                           |
-| ----------------------------------------------------- | ------------------------------ |
-| [agent-development](./agent-development/SKILL.md)     | Claude Code Agent 开发辅助     |
-| [command-development](./command-development/SKILL.md) | Claude Code Command 开发辅助   |
-| [skill-development](./skill-development/SKILL.md)     | Claude Code Skill 开发辅助     |
-| [hook-development](./hook-development/SKILL.md)       | Claude Code Hook 开发指南      |
-| [mcp-integration](./mcp-integration/SKILL.md)         | Claude Code MCP 服务器集成     |
-| [plugin-settings](./plugin-settings/SKILL.md)         | Claude Code 插件设置模式辅助   |
-| [plugin-structure](./plugin-structure/SKILL.md)       | Claude Code 插件结构和组织辅助 |
-
-### OpenClaw 辅助技能
-
-| 技能                                                              | 简述                          |
-| ----------------------------------------------------------------- | ----------------------------- |
-| [openclaw-agent-creator](./openclaw-agent-creator/SKILL.md)       | OpenClaw Agent 创建和配置辅助 |
-| [openclaw-cmd](./openclaw-cmd/SKILL.md)                           | OpenClaw CLI 命令行辅助       |
-| [openclaw-github-assistant](./openclaw-github-assistant/SKILL.md) | GitHub 仓库查询和管理工具     |
-
-### GUI 操作
-
-| 技能                          | 简述                     |
-| ----------------------------- | ------------------------ |
-| [mac-use](./mac-use/SKILL.md) | macOS GUI 应用可视化控制 |
-
-### 网页访问/浏览器操作
-
-| 技能                                          | 简述                                                           |
-| --------------------------------------------- | -------------------------------------------------------------- |
-| [web-access](./web-access/SKILL.md)           | 大统一网页访问工具，支持搜索、抓取、登录操作和浏览器后台自动化 |
-| [smart-web-fetch](./smart-web-fetch/SKILL.md) | 智能网页抓取，自动清洗 HTML 为 Markdown                        |
-
-### 端到端操作
-
-| 技能                                        | 简述                                           |
-| ------------------------------------------- | ---------------------------------------------- |
-| [ssh-essentials](./ssh-essentials/SKILL.md) | SSH 远程访问、密钥管理、隧道和文件传输基础命令 |
-
-### 事务处理
-
-| 技能                                          | 简述                   |
-| --------------------------------------------- | ---------------------- |
-| [imap-smtp-email](./imap-smtp-email/SKILL.md) | IMAP/SMTP 邮件管理工具 |
+| 技能                                                              | 简述                                                           |
+| ----------------------------------------------------------------- | -------------------------------------------------------------- |
+| [agent-development](./agent-development/SKILL.md)                 | Claude Code Agent 开发辅助                                     |
+| [command-development](./command-development/SKILL.md)             | Claude Code Command 开发辅助                                   |
+| [skill-development](./skill-development/SKILL.md)                 | Claude Code Skill 开发辅助                                     |
+| [hook-development](./hook-development/SKILL.md)                   | Claude Code Hook 开发指南                                      |
+| [mcp-integration](./mcp-integration/SKILL.md)                     | Claude Code MCP 服务器集成                                     |
+| [plugin-settings](./plugin-settings/SKILL.md)                     | Claude Code 插件设置模式辅助                                   |
+| [plugin-structure](./plugin-structure/SKILL.md)                   | Claude Code 插件结构和组织辅助                                 |
+| [openclaw-agent-creator](./openclaw-agent-creator/SKILL.md)       | OpenClaw Agent 创建和配置辅助                                  |
+| [openclaw-cmd](./openclaw-cmd/SKILL.md)                           | OpenClaw CLI 命令行辅助                                        |
+| [openclaw-github-assistant](./openclaw-github-assistant/SKILL.md) | GitHub 仓库查询和管理工具                                      |
+| [mac-use](./mac-use/SKILL.md)                                     | macOS GUI 应用可视化控制                                       |
+| [web-access](./web-access/SKILL.md)                               | 大统一网页访问工具，支持搜索、抓取、登录操作和浏览器后台自动化 |
+| [smart-web-fetch](./smart-web-fetch/SKILL.md)                     | 智能网页抓取，自动清洗 HTML 为 Markdown                        |
+| [ssh-essentials](./ssh-essentials/SKILL.md)                       | SSH 远程访问、密钥管理、隧道和文件传输基础命令                 |
+| [imap-smtp-email](./imap-smtp-email/SKILL.md)                     | IMAP/SMTP 邮件管理工具                                         |
+| [dev-doc-generator](./dev-doc-generator/SKILL.md)                 | 基于参考项目或需求交互式生成开发文档                           |
 
 ## 如何创建一个优秀的 Skill
 
