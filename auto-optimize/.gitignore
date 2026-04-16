@@ -1,0 +1,22 @@
+# Same intent as repository-root .gitignore (useful if this folder is copied standalone).
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Project artifacts when working under a repo that uses this Skill
+tracks/
+
+# Common delivery paths (project-specific)
+index.html
+assets/
+
+# Host / IDE local config
+.cursor/
