@@ -43,9 +43,9 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 | [smart-web-fetch](./smart-web-fetch/SKILL.md)                     | 智能网页抓取，自动清洗 HTML 为 Markdown                        |
 | [ssh-essentials](./ssh-essentials/SKILL.md)                       | SSH 远程访问、密钥管理、隧道和文件传输基础命令                 |
 | [imap-smtp-email](./imap-smtp-email/SKILL.md)                     | IMAP/SMTP 邮件管理工具                                         |
-| [dev-doc-generator](./dev-doc-generator/SKILL.md)                 | 基于参考项目或需求交互式生成开发文档                           |
-| [auto-optimize](./auto-optimize/SKILL.md)                         | AI 辅助交付的双层优化工作流（需求规格、多方案对比、迭代验证） |
-| [quick-guide-builder](./quick-guide-builder/SKILL.md)             | 基于 MCP 文档工具和源码交叉验证的指南文档构建                 |
+| [dev-roadmap-generator](./dev-roadmap-generator/SKILL.md)         | 基于参考项目或需求生成完整的开发文档与实施计划                 |
+| [auto-optimize](./auto-optimize/SKILL.md)                         | AI 辅助交付的双层优化工作流（需求规格、多方案对比、迭代验证）  |
+| [quick-guide-builder](./quick-guide-builder/SKILL.md)             | 基于 MCP 文档工具和源码交叉验证的指南文档构建                  |
 
 ## 如何创建一个优秀的 Skill
 
