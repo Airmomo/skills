@@ -11,6 +11,7 @@ version: 0.2.0
 Slash commands are frequently-used prompts defined as Markdown files that Claude executes during interactive sessions. Understanding command structure, frontmatter options, and dynamic features enables creating powerful, reusable workflows.
 
 **Key concepts:**
+
 - Markdown file format for commands
 - YAML frontmatter for configuration
 - Dynamic arguments and file references
@@ -22,6 +23,7 @@ Slash commands are frequently-used prompts defined as Markdown files that Claude
 ### What is a Slash Command?
 
 A slash command is a Markdown file containing a prompt that Claude executes when invoked. Commands provide:
+
 - **Reusability**: Define once, use repeatedly
 - **Consistency**: Standardize common workflows
 - **Sharing**: Distribute across team or projects
@@ -34,8 +36,10 @@ A slash command is a Markdown file containing a prompt that Claude executes when
 When a user invokes `/command-name`, the command content becomes Claude's instructions. Write commands as directives TO Claude about what to do, not as messages TO the user.
 
 **Correct approach (instructions for Claude):**
+
 ```markdown
 Review this code for security vulnerabilities including:
+
 - SQL injection
 - XSS attacks
 - Authentication issues
@@ -44,6 +48,7 @@ Provide specific line numbers and severity ratings.
 ```
 
 **Incorrect approach (messages to user):**
+
 ```markdown
 This command will review your code for security issues.
 You'll receive a report with vulnerability details.
@@ -54,18 +59,21 @@ The first example tells Claude what to do. The second tells the user what will h
 ### Command Locations
 
 **Project commands** (shared with team):
+
 - Location: `.claude/commands/`
 - Scope: Available in specific project
 - Label: Shown as "(project)" in `/help`
 - Use for: Team workflows, project-specific tasks
 
 **Personal commands** (available everywhere):
+
 - Location: `~/.claude/commands/`
 - Scope: Available in all projects
 - Label: Shown as "(user)" in `/help`
 - Use for: Personal workflows, cross-project utilities
 
 **Plugin commands** (bundled with plugins):
+
 - Location: `plugin-name/commands/`
 - Scope: Available when plugin installed
 - Label: Shown as "(plugin-name)" in `/help`
@@ -85,8 +93,10 @@ Commands are Markdown files with `.md` extension:
 ```
 
 **Simple command:**
+
 ```markdown
 Review this code for security vulnerabilities including:
+
 - SQL injection
 - XSS attacks
 - Authentication bypass
@@ -138,6 +148,7 @@ allowed-tools: Read, Write, Edit, Bash(git:*)
 ```
 
 **Patterns:**
+
 - `Read, Write, Edit` - Specific tools
 - `Bash(git:*)` - Bash with git commands only
 - `*` - All tools (rarely needed)
@@ -157,6 +168,7 @@ model: haiku
 ```
 
 **Use cases:**
+
 - `haiku` - Fast, simple commands
 - `sonnet` - Standard workflows
 - `opus` - Complex analysis
@@ -174,6 +186,7 @@ argument-hint: [pr-number] [priority] [assignee]
 ```
 
 **Benefits:**
+
 - Helps users understand command arguments
 - Improves command discovery
 - Documents command interface
@@ -208,12 +221,14 @@ Fix issue #$ARGUMENTS following our coding standards and best practices.
 ```
 
 **Usage:**
+
 ```
 > /fix-issue 123
 > /fix-issue 456
 ```
 
 **Expands to:**
+
 ```
 Fix issue #123 following our coding standards...
 Fix issue #456 following our coding standards...
@@ -234,11 +249,13 @@ After review, assign to $3 for follow-up.
 ```
 
 **Usage:**
+
 ```
 > /review-pr 123 high alice
 ```
 
 **Expands to:**
+
 ```
 Review pull request #123 with priority level high.
 After review, assign to alice for follow-up.
@@ -253,11 +270,13 @@ Deploy $1 to $2 environment with options: $3
 ```
 
 **Usage:**
+
 ```
 > /deploy api staging --force --skip-tests
 ```
 
 **Expands to:**
+
 ```
 Deploy api to staging environment with options: --force --skip-tests
 ```
@@ -275,12 +294,14 @@ argument-hint: [file-path]
 ---
 
 Review @$1 for:
+
 - Code quality
 - Best practices
 - Potential bugs
 ```
 
 **Usage:**
+
 ```
 > /review-file src/api/users.ts
 ```
@@ -295,6 +316,7 @@ Reference multiple files:
 Compare @src/old-version.js with @src/new-version.js
 
 Identify:
+
 - Breaking changes
 - New features
 - Bug fixes
@@ -308,6 +330,7 @@ Reference known files without arguments:
 Review @package.json and @tsconfig.json for consistency
 
 Ensure:
+
 - TypeScript version matches
 - Dependencies are aligned
 - Build configuration is correct
@@ -318,6 +341,7 @@ Ensure:
 Commands can execute bash commands inline to dynamically gather context before Claude processes the command. This is useful for including repository state, environment information, or project-specific context.
 
 **When to use:**
+
 - Include dynamic context (git status, environment vars, etc.)
 - Gather project/repository state
 - Build context-aware workflows
@@ -361,6 +385,7 @@ Organize commands in subdirectories:
 ```
 
 **Benefits:**
+
 - Logical grouping by category
 - Namespace shown in `/help`
 - Easier to find related commands
@@ -390,8 +415,8 @@ argument-hint: [pr-number]
 ---
 
 $IF($1,
-  Review PR #$1,
-  Please provide a PR number. Usage: /review-pr [number]
+Review PR #$1,
+Please provide a PR number. Usage: /review-pr [number]
 )
 ```
 
@@ -435,7 +460,7 @@ Deploy application to $1 environment using version $2...
 
 ### Review Pattern
 
-```markdown
+````markdown
 ---
 description: Review code changes
 allowed-tools: Read, Bash(git:*)
@@ -443,9 +468,11 @@ allowed-tools: Read, Bash(git:*)
 
 Files changed: ```bash
 git diff --name-only
+
 ```
 
 Review each file for:
+
 1. Code quality and style
 2. Potential bugs or issues
 3. Test coverage
@@ -453,10 +480,11 @@ Review each file for:
 
 Provide specific feedback for each file.
 ```
+````
 
 ### Testing Pattern
 
-```markdown
+````markdown
 ---
 description: Run tests for specific file
 argument-hint: [test-file]
@@ -465,10 +493,12 @@ allowed-tools: Bash(npm:*)
 
 Run tests: ```bash
 npm test $1
+
 ```
 
 Analyze results and suggest fixes for failures.
 ```
+````
 
 ### Documentation Pattern
 
@@ -479,6 +509,7 @@ argument-hint: [source-file]
 ---
 
 Generate comprehensive documentation for @$1 including:
+
 - Function/class descriptions
 - Parameter documentation
 - Return value descriptions
@@ -488,7 +519,7 @@ Generate comprehensive documentation for @$1 including:
 
 ### Workflow Pattern
 
-```markdown
+````markdown
 ---
 description: Complete PR workflow
 argument-hint: [pr-number]
@@ -499,32 +530,39 @@ PR #$1 Workflow:
 
 1. Fetch PR: ```bash
    gh pr view $1
-   ```
+
+```
+
 2. Review changes
 3. Run checks
 4. Approve or request changes
 ```
+````
 
 ## Troubleshooting
 
 **Command not appearing:**
+
 - Check file is in correct directory
 - Verify `.md` extension present
 - Ensure valid Markdown format
 - Restart Claude Code
 
 **Arguments not working:**
+
 - Verify `$1`, `$2` syntax correct
 - Check `argument-hint` matches usage
 - Ensure no extra spaces
 
 **Bash execution failing:**
+
 - Check `allowed-tools` includes Bash
 - Verify command syntax in backticks
 - Test command in terminal first
 - Check for required permissions
 
 **File references not working:**
+
 - Verify `@` syntax correct
 - Check file path is valid
 - Ensure Read tool allowed
@@ -537,6 +575,7 @@ PR #$1 Workflow:
 Plugin commands have access to `${CLAUDE_PLUGIN_ROOT}`, an environment variable that resolves to the plugin's absolute path.
 
 **Purpose:**
+
 - Reference plugin files portably
 - Execute plugin scripts
 - Load plugin configuration
@@ -544,7 +583,7 @@ Plugin commands have access to `${CLAUDE_PLUGIN_ROOT}`, an environment variable 
 
 **Basic usage:**
 
-```markdown
+````markdown
 ---
 description: Analyze using plugin script
 allowed-tools: Bash(node:*)
@@ -552,30 +591,37 @@ allowed-tools: Bash(node:*)
 
 Run analysis: ```bash
 node ${CLAUDE_PLUGIN_ROOT}/scripts/analyze.js $1
+
 ```
 
 Review results and report findings.
 ```
+````
 
 **Common patterns:**
 
-```markdown
+````markdown
 # Execute plugin script
+
 ```bash
 bash ${CLAUDE_PLUGIN_ROOT}/scripts/script.sh
 ```
 
 # Load plugin configuration
+
 @${CLAUDE_PLUGIN_ROOT}/config/settings.json
 
 # Use plugin template
+
 @${CLAUDE_PLUGIN_ROOT}/templates/report.md
 
 # Access plugin resources
+
 @${CLAUDE_PLUGIN_ROOT}/docs/reference.md
-```
+````
 
 **Why use it:**
+
 - Works across all installations
 - Portable between systems
 - No hardcoded paths needed
@@ -588,20 +634,22 @@ Plugin commands discovered automatically from `commands/` directory:
 ```
 plugin-name/
 ├── commands/
-│   ├── foo.md              # /foo (plugin:plugin-name)
-│   ├── bar.md              # /bar (plugin:plugin-name)
-│   └── utils/
-│       └── helper.md       # /helper (plugin:plugin-name:utils)
+│ ├── foo.md # /foo (plugin:plugin-name)
+│ ├── bar.md # /bar (plugin:plugin-name)
+│ └── utils/
+│ └── helper.md # /helper (plugin:plugin-name:utils)
 └── plugin.json
 ```
 
 **Namespace benefits:**
+
 - Logical command grouping
 - Shown in `/help` output
 - Avoid name conflicts
 - Organize related commands
 
 **Naming conventions:**
+
 - Use descriptive action names
 - Avoid generic names (test, run)
 - Consider plugin-specific prefix
@@ -639,7 +687,7 @@ Generate documentation for $1 following template structure.
 
 **Multi-script pattern:**
 
-```markdown
+````markdown
 ---
 description: Complete build workflow
 allowed-tools: Bash(*)
@@ -647,16 +695,21 @@ allowed-tools: Bash(*)
 
 Build: ```bash
 bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh
-```
+
+````
+
 Test: ```bash
 bash ${CLAUDE_PLUGIN_ROOT}/scripts/test.sh
-```
+````
+
 Package: ```bash
 bash ${CLAUDE_PLUGIN_ROOT}/scripts/package.sh
+
 ```
 
 Review outputs and report workflow status.
 ```
+````
 
 **See `references/plugin-features-reference.md` for detailed patterns.**
 
@@ -677,17 +730,20 @@ argument-hint: [file-path]
 Initiate comprehensive review of @$1 using the code-reviewer agent.
 
 The agent will analyze:
+
 - Code structure
 - Security issues
 - Performance
 - Best practices
 
 Agent uses plugin resources:
+
 - ${CLAUDE_PLUGIN_ROOT}/config/rules.json
 - ${CLAUDE_PLUGIN_ROOT}/checklists/review.md
 ```
 
 **Key points:**
+
 - Agent must exist in `plugin/agents/` directory
 - Claude uses Task tool to launch agent
 - Document agent capabilities
@@ -706,6 +762,7 @@ argument-hint: [api-file]
 Document API in @$1 following plugin standards.
 
 Use the api-docs-standards skill to ensure:
+
 - Complete endpoint documentation
 - Consistent formatting
 - Example quality
@@ -715,6 +772,7 @@ Generate production-ready API docs.
 ```
 
 **Key points:**
+
 - Skill must exist in `plugin/skills/` directory
 - Mention skill name to trigger invocation
 - Document skill purpose
@@ -723,6 +781,7 @@ Generate production-ready API docs.
 ### Hook Coordination
 
 Design commands that work with plugin hooks:
+
 - Commands can prepare state for hooks to process
 - Hooks execute automatically on tool events
 - Commands should document expected hook behavior
@@ -734,7 +793,7 @@ See `references/plugin-features-reference.md` for examples of commands that coor
 
 Combine agents, skills, and scripts:
 
-```markdown
+````markdown
 ---
 description: Comprehensive review workflow
 argument-hint: [file]
@@ -744,6 +803,7 @@ allowed-tools: Bash(node:*), Read
 Target: @$1
 
 Phase 1 - Static Analysis:
+
 ```bash
 node ${CLAUDE_PLUGIN_ROOT}/scripts/lint.js $1
 ```
@@ -758,9 +818,10 @@ Phase 4 - Report:
 Template: @${CLAUDE_PLUGIN_ROOT}/templates/review.md
 
 Compile findings into report following template.
-```
+````
 
 **When to use:**
+
 - Complex multi-step workflows
 - Leverage multiple plugin capabilities
 - Require specialized analysis
@@ -772,7 +833,7 @@ Commands should validate inputs and resources before processing.
 
 ### Argument Validation
 
-```markdown
+````markdown
 ---
 description: Deploy with validation
 argument-hint: [environment]
@@ -780,18 +841,20 @@ argument-hint: [environment]
 
 Validate environment: ```bash
 echo "$1" | grep -E "^(dev|staging|prod)$" || echo "INVALID"
+
 ```
 
 If $1 is valid environment:
-  Deploy to $1
+Deploy to $1
 Otherwise:
-  Explain valid environments: dev, staging, prod
-  Show usage: /deploy [environment]
+Explain valid environments: dev, staging, prod
+Show usage: /deploy [environment]
 ```
+````
 
 ### File Existence Checks
 
-```markdown
+````markdown
 ---
 description: Process configuration
 argument-hint: [config-file]
@@ -799,39 +862,48 @@ argument-hint: [config-file]
 
 Check file exists: ```bash
 test -f $1 && echo "EXISTS" || echo "MISSING"
+
 ```
 
 If file exists:
-  Process configuration: @$1
+Process configuration: @$1
 Otherwise:
-  Explain where to place config file
-  Show expected format
-  Provide example configuration
+Explain where to place config file
+Show expected format
+Provide example configuration
 ```
+````
 
 ### Plugin Resource Validation
 
-```markdown
+````markdown
 ---
 description: Run plugin analyzer
 allowed-tools: Bash(test:*)
 ---
 
 Validate plugin setup:
+
 - Script: ```bash
   test -x ${CLAUDE_PLUGIN_ROOT}/bin/analyze && echo "✓" || echo "✗"
+
   ```
+
+  ```
+
 - Config: ```bash
   test -f ${CLAUDE_PLUGIN_ROOT}/config.json && echo "✓" || echo "✗"
   ```
 
+  ```
+
 If all checks pass, run analysis.
 Otherwise, report missing components.
-```
+````
 
 ### Error Handling
 
-```markdown
+````markdown
 ---
 description: Build with error handling
 allowed-tools: Bash(*)
@@ -839,17 +911,20 @@ allowed-tools: Bash(*)
 
 Execute build: ```bash
 bash ${CLAUDE_PLUGIN_ROOT}/scripts/build.sh 2>&1 || echo "BUILD_FAILED"
+
 ```
 
 If build succeeded:
-  Report success and output location
+Report success and output location
 If build failed:
-  Analyze error output
-  Suggest likely causes
-  Provide troubleshooting steps
+Analyze error output
+Suggest likely causes
+Provide troubleshooting steps
 ```
+````
 
 **Best practices:**
+
 - Validate early in command
 - Provide helpful error messages
 - Suggest corrective actions
@@ -857,6 +932,26 @@ If build failed:
 
 ---
 
-For detailed frontmatter field specifications, see `references/frontmatter-reference.md`.
-For plugin-specific features and patterns, see `references/plugin-features-reference.md`.
-For command pattern examples, see `examples/` directory.
+## Additional Resources
+
+### Reference Files
+
+- **`references/frontmatter-reference.md`** — Comprehensive YAML frontmatter specifications (description, allowed-tools, model, argument-hint, disable-model-invocation), including syntax, examples, and validation checklists for each field.
+
+- **`references/plugin-features-reference.md`** — Plugin-specific features: Usage of CLAUDE_PLUGIN_ROOT variable, automatic discovery, plugin command patterns (configuration-driven, template generation, multi-script workflows), and integration modes with Agent/Skill/Hook.
+
+- **`references/advanced-workflows.md`** — Advanced workflow patterns: multi-step command sequences, state persistence, conditional branches, command pipelines, parallel execution, checkpoint recovery, and rollback strategies.
+
+- **`references/interactive-commands.md`** — Design of interactive commands: Integration with AskUserQuestion tool, multi-phase interactive modes, dynamic option generation, validation loops, and a complete multi-Agent starter example.
+
+- **`references/documentation-patterns.md`** — Command self-documentation strategies: Documentation templates (usage, parameters, examples, change logs), inline comment patterns, built-in help, context hints, and error recovery guidance.
+
+- **`references/testing-strategies.md`** — Multi-level testing framework: Syntax validation, frontmatter checks, parameter boundary testing, file reference testing, Bash execution security validation, automated testing, and CI/CD integration.
+
+- **`references/marketplace-considerations.md`** — Guidelines for marketplace distribution: Cross-platform compatibility, dependency management, first-run setup, namespace standards, version compatibility, deprecation strategies, and pre-release checklist.
+
+- **`references/command-development.md`** — Standard command development guide: File formats, dynamic parameters, file references, Bash execution syntax, and core concept summaries.
+
+### Examples
+
+Working examples in `examples/` directory.
