@@ -660,6 +660,7 @@ Plugin-dev's skills demonstrate best practices:
 For complete skill-creator methodology:
 
 - **`references/skill-creator-original.md`** - Full original skill-creator content
+- **`references/skill-development.md`** - Standard Skills Development Guide (MUST BE KNOWN)
 
 ## Implementation Workflow
 
