@@ -28,6 +28,7 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 
 | 技能                                                              | 简述                                                           |
 | ----------------------------------------------------------------- | -------------------------------------------------------------- |
+| [aihot](./aihot/SKILL.md)                                         | 获取每日 AI 热点中文资讯                                       |
 | [agent-development](./agent-development/SKILL.md)                 | Claude Code Agent 开发辅助                                     |
 | [command-development](./command-development/SKILL.md)             | Claude Code Command 开发辅助                                   |
 | [skill-development](./skill-development/SKILL.md)                 | Claude Code Skill 开发辅助                                     |
