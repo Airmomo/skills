@@ -45,6 +45,7 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 | [ssh-essentials](./ssh-essentials/SKILL.md)                       | SSH 远程访问、密钥管理、隧道和文件传输基础命令                 |
 | [dev-roadmap-generator](./dev-roadmap-generator/SKILL.md)         | 基于参考项目或需求生成完整的开发文档与实施计划                 |
 | [auto-optimize](./auto-optimize/SKILL.md)                         | AI 辅助交付的双层优化工作流（需求规格、多方案对比、迭代验证）  |
+| [tdad-integration](./tdad-integration/SKILL.md)                  | 测试驱动代理开发（TDAD），子代理隔离执行 Red-Green-Refactor 循环 |
 | [quick-guide-builder](./quick-guide-builder/SKILL.md)             | 基于 MCP 文档工具和源码交叉验证的指南文档构建                  |
 | [docling-document-intelligence](./docling-document-intelligence/SKILL.md) | 基于 Docling 解析、转换、分块和分析文档（PDF/DOCX/PPTX/HTML/图片） |
 | [html-doc](./html-doc/SKILL.md)                                   | 生成自包含的富 HTML 文档（报告、幻灯片、看板等）               |

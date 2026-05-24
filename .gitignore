@@ -210,5 +210,6 @@ __marimo__/
 .DS_Store
 temp/
 .claude/
+.vscode/
 cc-skills-soft-install.sh
 cc-skills-install.bat
