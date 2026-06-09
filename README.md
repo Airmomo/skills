@@ -28,7 +28,6 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 
 | 技能                                                              | 简述                                                           |
 | ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| [aihot](./aihot/SKILL.md)                                         | 获取每日 AI 热点中文资讯                                       |
 | [agent-development](./agent-development/SKILL.md)                 | Claude Code Agent 开发辅助                                     |
 | [command-development](./command-development/SKILL.md)             | Claude Code Command 开发辅助                                   |
 | [skill-development](./skill-development/SKILL.md)                 | Claude Code Skill 开发辅助                                     |
@@ -38,18 +37,11 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 | [plugin-structure](./plugin-structure/SKILL.md)                   | Claude Code 插件结构和组织辅助                                 |
 | [openclaw-agent-creator](./openclaw-agent-creator/SKILL.md)       | OpenClaw Agent 创建和配置辅助                                  |
 | [openclaw-cmd](./openclaw-cmd/SKILL.md)                           | OpenClaw CLI 命令行辅助                                        |
-| [openclaw-github-assistant](./openclaw-github-assistant/SKILL.md) | GitHub 仓库查询和管理工具                                      |
-| [mac-use](./mac-use/SKILL.md)                                     | macOS GUI 应用可视化控制                                       |
-| [web-access](./web-access/SKILL.md)                               | 大统一网页访问工具，支持搜索、抓取、登录操作和浏览器后台自动化 |
-| [smart-web-fetch](./smart-web-fetch/SKILL.md)                     | 智能网页抓取，自动清洗 HTML 为 Markdown                        |
-| [ssh-essentials](./ssh-essentials/SKILL.md)                       | SSH 远程访问、密钥管理、隧道和文件传输基础命令                 |
 | [dev-roadmap-generator](./dev-roadmap-generator/SKILL.md)         | 基于参考项目或需求生成完整的开发文档与实施计划                 |
-| [auto-optimize](./auto-optimize/SKILL.md)                         | AI 辅助交付的双层优化工作流（需求规格、多方案对比、迭代验证）  |
-| [tdad-integration](./tdad-integration/SKILL.md)                  | 测试驱动代理开发（TDAD），子代理隔离执行 Red-Green-Refactor 循环 |
+| [tdad-integration](./tdad-integration/SKILL.md)                   | 测试驱动代理开发（TDAD），子代理隔离执行 Red-Green-Refactor 循环 |
 | [quick-guide-builder](./quick-guide-builder/SKILL.md)             | 基于 MCP 文档工具和源码交叉验证的指南文档构建                  |
 | [docling-document-intelligence](./docling-document-intelligence/SKILL.md) | 基于 Docling 解析、转换、分块和分析文档（PDF/DOCX/PPTX/HTML/图片） |
 | [html-doc](./html-doc/SKILL.md)                                   | 生成自包含的富 HTML 文档（报告、幻灯片、看板等）               |
-| [ui-align](./ui-align/SKILL.md)                                   | 自动对比 HTML 设计稿与前端实现代码并迭代修复差异               |
 
 ## 如何创建一个优秀的 Skill
 
