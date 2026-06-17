@@ -1,6 +1,6 @@
 ---
 name: skill-development
-description: This skill should be used when the user wants to "create a skill", "add a skill to plugin", "write a new skill", "improve skill description", "organize skill content", or needs guidance on skill structure, progressive disclosure, or skill development best practices for Claude Code plugins.
+description: This skill should be used when the user wants to "create a skill", "add a skill to plugin", "write a new skill", "improve skill description", "organize skill content", "reduce skill false triggers", "fix skill misrouting", "organize large skill collections", "scale skills beyond dozens", or needs guidance on skill structure, progressive disclosure, skill routing optimization, or skill development best practices for Claude Code plugins. Do NOT use for plugin.json manifest configuration, hook development, or agent creation.
 version: 0.1.0
 ---
 
@@ -184,6 +184,49 @@ description: Load when user needs hook help.  # Not third person
 description: Provides hook guidance.  # No trigger phrases
 ```
 
+#### Scene-based Triggers (Required)
+
+The core principle of a strong description is writing **when to use** the skill, not **what the skill is**. Skill routing is semantic matching—concrete trigger scenarios produce higher hit rates than abstract feature nouns.
+
+❌ **Bad (feature-based):**
+
+```yaml
+description: PPT generation skill.
+description: SQL generator.
+```
+
+✅ **Good (scene-based):**
+
+```yaml
+description: This skill should be used when the user asks to "create quarterly business review slides", "prepare investor pitch deck", "make presentation for stakeholder update", or mentions slide-based reporting deliverables.
+```
+
+Enumerate **business scenarios** (what the user is trying to accomplish) rather than feature verbs. The more concrete the scenario, the higher the semantic match score.
+
+#### Negative Sample Description (Required)
+
+To reduce cross-skill false triggers, explicitly state what the skill is **NOT** for. This is critical when sibling skills cover adjacent domains.
+
+❌ **Bad (no negative boundary):**
+
+```yaml
+description: This skill should be used when the user asks to "generate SQL".
+```
+
+✅ **Good (with negative boundary):**
+
+```yaml
+description: This skill should be used when the user asks to "generate SQL query", "write SELECT statement". Do NOT use for database schema design, performance tuning, or migration generation—those belong to db-schema-design and db-optimization skills.
+```
+
+The negative sample serves two purposes: it sharpens the boundary of this skill and directs the model to the correct sibling skill.
+
+#### Complete Description Template
+
+```yaml
+description: This skill should be used when [business scenario 1], [business scenario 2], or [business scenario 3]. Do NOT use for [adjacent domain 1] or [adjacent domain 2]—those belong to [sibling skill names].
+```
+
 To complete SKILL.md body, answer the following questions:
 
 1. What is the purpose of the skill, in a few sentences?
@@ -302,32 +345,19 @@ cc --plugin-dir /path/to/plugin
 # Verify skill loads correctly
 ```
 
-## Examples from Plugin-Dev
+## Organizing Large Skill Collections
 
-Study the skills in this plugin as examples of best practices:
+When a plugin accumulates more than ~15-20 skills, flat organization causes routing failures—Claude may skip the right skill or pick a wrong one. This is because skill routing is fundamentally a semantic retrieval problem, and search space size directly affects hit rate.
 
-**hook-development skill:**
+Apply three techniques to keep routing accurate at scale:
 
-- Excellent trigger phrases: "create a hook", "add a PreToolUse hook", etc.
-- Lean SKILL.md (1,651 words)
-- 3 references/ files for detailed content
-- 3 examples/ of working hooks
-- 3 scripts/ utilities
+1. **Scene-based descriptions** - Write trigger scenarios (business situations), not feature nouns
+2. **Negative samples** - Explicitly state what NOT to use each skill for, pointing to sibling skills
+3. **Hierarchical organization** - Group skills into a tree so Claude finds the category first, then the specific skill, shrinking the per-decision search space
 
-**agent-development skill:**
+These three techniques are complementary, not alternative. Scene-based descriptions sharpen the matching signal, negative samples suppress noise, and hierarchy bounds the search space.
 
-- Strong triggers: "create an agent", "agent frontmatter", etc.
-- Focused SKILL.md (1,438 words)
-- References include the AI generation prompt from Claude Code
-- Complete agent examples
-
-**plugin-settings skill:**
-
-- Specific triggers: "plugin settings", ".local.md files", "YAML frontmatter"
-- References show real implementations (multi-agent-swarm, ralph-wiggum)
-- Working parsing scripts
-
-Each demonstrates progressive disclosure and strong triggering.
+For complete guidance on classification principles (by business domain / user role / task type), three Skill Tree implementation options, INDEX.md templates, and case studies comparing flat vs. hierarchical organization at 50 skills, see **`references/skill-organization.md`**.
 
 ## Progressive Disclosure in Practice
 
@@ -452,7 +482,10 @@ Before finalizing a skill:
 - [ ] Uses third person ("This skill should be used when...")
 - [ ] Includes specific trigger phrases users would say
 - [ ] Lists concrete scenarios ("create X", "configure Y")
+- [ ] Uses scene-based triggers (business scenarios, not feature nouns)
+- [ ] Includes negative samples ("Do NOT use for..." with sibling skill pointers)
 - [ ] Not vague or generic
+- [ ] If skill collection > 15, skill is properly categorized in hierarchy
 
 **Content Quality:**
 
@@ -577,6 +610,42 @@ Use the grep tool to search for patterns.
 
 **Why good:** Claude knows where to find additional information
 
+### Mistake 5: Feature-Based Description (No Scenarios)
+
+❌ **Bad:**
+
+```yaml
+description: PDF processing skill.
+```
+
+**Why bad:** Describes what the skill is, not when to use it. No concrete trigger scenarios for semantic matching.
+
+✅ **Good:**
+
+```yaml
+description: This skill should be used when the user asks to "rotate PDF", "merge multiple PDFs", "extract pages from PDF", or "compress PDF size".
+```
+
+**Why good:** Enumerates business scenarios users would actually say, maximizing semantic match score.
+
+### Mistake 6: Missing Negative Samples
+
+❌ **Bad:**
+
+```yaml
+description: This skill should be used when the user asks to "generate SQL".
+```
+
+**Why bad:** No boundary against adjacent skills (schema design, performance tuning, migration). High risk of cross-skill false triggers.
+
+✅ **Good:**
+
+```yaml
+description: This skill should be used when the user asks to "generate SQL query", "write SELECT statement". Do NOT use for schema design or performance tuning—those belong to db-schema-design and db-optimization skills.
+```
+
+**Why good:** Explicit negative boundary reduces misrouting and points the model to the correct sibling skill.
+
 ## Quick Reference
 
 ### Minimal Skill
@@ -624,18 +693,23 @@ Good for: Complex domains with validation utilities
 
 - Use third-person in description ("This skill should be used when...")
 - Include specific trigger phrases ("create X", "configure Y")
+- Use scene-based triggers (business scenarios, not feature nouns)
+- Include negative samples ("Do NOT use for..." with sibling skill pointers)
 - Keep SKILL.md lean (1,500-2,000 words)
 - Use progressive disclosure (move details to references/)
 - Write in imperative/infinitive form
 - Reference supporting files clearly
 - Provide working examples
 - Create utility scripts for common operations
+- Apply hierarchical organization when skill count > 15 (see `references/skill-organization.md`)
 - Study plugin-dev's skills as templates
 
 ❌ **DON'T:**
 
 - Use second person anywhere
 - Have vague trigger conditions
+- Write feature-based descriptions ("X processing skill") with no scenarios
+- Omit negative boundaries when sibling skills cover adjacent domains
 - Put everything in SKILL.md (>3,000 words without references/)
 - Write in second person ("You should...")
 - Leave resources unreferenced
@@ -644,23 +718,13 @@ Good for: Complex domains with validation utilities
 
 ## Additional Resources
 
-### Study These Skills
-
-Plugin-dev's skills demonstrate best practices:
-
-- `../hook-development/` - Progressive disclosure, utilities
-- `../agent-development/` - AI-assisted creation, references
-- `../mcp-integration/` - Comprehensive references
-- `../plugin-settings/` - Real-world examples
-- `../command-development/` - Clear critical concepts
-- `../plugin-structure/` - Good organization
-
 ### Reference Files
 
 For complete skill-creator methodology:
 
 - **`references/skill-creator-original.md`** - Full original skill-creator content
 - **`references/skill-development.md`** - Standard Skills Development Guide (MUST BE KNOWN)
+- **`references/skill-organization.md`** - Large-scale Skill organization, classification, and Skill Tree implementation
 
 ## Implementation Workflow
 
