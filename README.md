@@ -42,6 +42,7 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 | [quick-guide-builder](./quick-guide-builder/SKILL.md)             | 基于 MCP 文档工具和源码交叉验证的指南文档构建                  |
 | [docling-document-intelligence](./docling-document-intelligence/SKILL.md) | 基于 Docling 解析、转换、分块和分析文档（PDF/DOCX/PPTX/HTML/图片） |
 | [html-doc](./html-doc/SKILL.md)                                   | 生成自包含的富 HTML 文档（报告、幻灯片、看板等）               |
+| [wails3-dev](./wails3-dev/SKILL.md)                               | 基于 Wails v3 的跨平台桌面应用开发（Go 后端 + Web 前端）       |
 
 ## 如何创建一个优秀的 Skill
 

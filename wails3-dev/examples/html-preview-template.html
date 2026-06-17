@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+  Wails v3 — HTML UI Preview Template (Phase 4 of SKILL.md)
+
+  Purpose: a SINGLE self-contained HTML file that mocks the target screen/layout
+  so the user can review the design BEFORE real implementation. No Go bindings,
+  no Wails runtime — purely visual.
+
+  How to use:
+    1. Duplicate this file per screen you need to preview.
+    2. Tailwind loads via the Play CDN (no build step). Replace the palette /
+       typography / components to match the agreed UI style (SKILL.md Phase 2).
+    3. For an EXISTING project: copy real design tokens (colors, radius,
+       spacing, fonts, component shapes) from the live frontend so the preview
+       matches the baseline.
+    4. Fill with realistic placeholder data.
+    5. Hand the file to the user; iterate on feedback; only then implement.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI Preview — My App</title>
+
+  <!-- Tailwind via Play CDN (dev preview only; real app uses the Vite plugin) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Project design tokens go here. Match the real app's palette for previews
+    // of existing projects so the mockup reads as part of the same product.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#eef6ff',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased select-none">
+
+  <!-- ===== App shell: sidebar + main ===== -->
+  <div class="h-screen w-screen flex">
+
+    <!-- Sidebar -->
+    <aside class="w-60 bg-slate-900 text-slate-300 flex flex-col">
+      <div class="h-14 flex items-center gap-2 px-4 text-white font-semibold">
+        <span class="inline-block w-6 h-6 rounded bg-brand-500"></span>
+        My App
+      </div>
+      <nav class="flex-1 px-2 py-3 space-y-1 text-sm">
+        <a class="block px-3 py-2 rounded-md bg-brand-600 text-white">Dashboard</a>
+        <a class="block px-3 py-2 rounded-md hover:bg-slate-800">Notes</a>
+        <a class="block px-3 py-2 rounded-md hover:bg-slate-800">Settings</a>
+      </nav>
+      <div class="p-3 text-xs text-slate-500">v0.1.0 preview</div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 flex flex-col">
+      <!-- Title bar / header -->
+      <header class="h-14 bg-white border-b flex items-center justify-between px-6">
+        <h1 class="text-base font-semibold">Dashboard</h1>
+        <button class="px-3 py-1.5 text-sm rounded-md bg-brand-600 text-white hover:bg-brand-700">
+          New
+        </button>
+      </header>
+
+      <!-- Content -->
+      <section class="flex-1 overflow-auto p-6 space-y-6">
+        <!-- Stat cards -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="text-xs text-slate-500">Total</div>
+            <div class="text-2xl font-semibold mt-1">128</div>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="text-xs text-slate-500">Active</div>
+            <div class="text-2xl font-semibold mt-1">42</div>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="text-xs text-slate-500">Pending</div>
+            <div class="text-2xl font-semibold mt-1">7</div>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 text-slate-500 text-left">
+              <tr>
+                <th class="px-4 py-2 font-medium">Name</th>
+                <th class="px-4 py-2 font-medium">Status</th>
+                <th class="px-4 py-2 font-medium">Updated</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr><td class="px-4 py-2">Item Alpha</td><td class="px-4 py-2"><span class="px-2 py-0.5 rounded bg-green-100 text-green-700">OK</span></td><td class="px-4 py-2 text-slate-500">2026-06-17</td></tr>
+              <tr><td class="px-4 py-2">Item Beta</td><td class="px-4 py-2"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-700">Pending</span></td><td class="px-4 py-2 text-slate-500">2026-06-16</td></tr>
+              <tr><td class="px-4 py-2">Item Gamma</td><td class="px-4 py-2"><span class="px-2 py-0.5 rounded bg-green-100 text-green-700">OK</span></td><td class="px-4 py-2 text-slate-500">2026-06-15</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>
