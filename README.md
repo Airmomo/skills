@@ -26,23 +26,42 @@ git clone https://github.com/Airmomo/skills.git && cp -r skills/* ~/.claude/skil
 
 ## 技能列表
 
-| 技能                                                              | 简述                                                           |
-| ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| [agent-development](./agent-development/SKILL.md)                 | Claude Code Agent 开发辅助                                     |
-| [command-development](./command-development/SKILL.md)             | Claude Code Command 开发辅助                                   |
-| [skill-development](./skill-development/SKILL.md)                 | Claude Code Skill 开发辅助                                     |
-| [hook-development](./hook-development/SKILL.md)                   | Claude Code Hook 开发指南                                      |
-| [mcp-integration](./mcp-integration/SKILL.md)                     | Claude Code MCP 服务器集成                                     |
-| [plugin-settings](./plugin-settings/SKILL.md)                     | Claude Code 插件设置模式辅助                                   |
-| [plugin-structure](./plugin-structure/SKILL.md)                   | Claude Code 插件结构和组织辅助                                 |
-| [openclaw-agent-creator](./openclaw-agent-creator/SKILL.md)       | OpenClaw Agent 创建和配置辅助                                  |
-| [openclaw-cmd](./openclaw-cmd/SKILL.md)                           | OpenClaw CLI 命令行辅助                                        |
-| [dev-roadmap-generator](./dev-roadmap-generator/SKILL.md)         | 基于参考项目或需求生成完整的开发文档与实施计划                 |
-| [tdad-integration](./tdad-integration/SKILL.md)                   | 测试驱动代理开发（TDAD），子代理隔离执行 Red-Green-Refactor 循环 |
-| [quick-guide-builder](./quick-guide-builder/SKILL.md)             | 基于 MCP 文档工具和源码交叉验证的指南文档构建                  |
+以下是整理后的技能列表：
+
+---
+
+## Claude Code 插件开发
+
+| 技能 | 简述 |
+|------|------|
+| [plugin-structure](./plugin-structure/SKILL.md) | Claude Code 插件结构和组织辅助 |
+| [plugin-settings](./plugin-settings/SKILL.md) | Claude Code 插件设置模式辅助 |
+| [agent-development](./agent-development/SKILL.md) | Claude Code Agent 开发辅助 |
+| [command-development](./command-development/SKILL.md) | Claude Code Command 开发辅助 |
+| [skill-development](./skill-development/SKILL.md) | Claude Code Skill 开发辅助 |
+| [hook-development](./hook-development/SKILL.md) | Claude Code Hook 开发指南 |
+| [mcp-integration](./mcp-integration/SKILL.md) | Claude Code MCP 服务器集成 |
+
+---
+
+## OpenClaw 工具
+
+| 技能 | 简述 |
+|------|------|
+| [openclaw-agent-creator](./openclaw-agent-creator/SKILL.md) | OpenClaw Agent 创建和配置辅助 |
+| [openclaw-cmd](./openclaw-cmd/SKILL.md) | OpenClaw CLI 命令行辅助 |
+
+---
+
+## 开发流程与工具链
+
+| 技能 | 简述 |
+|------|------|
+| [dev-roadmap-generator](./dev-roadmap-generator/SKILL.md) | 基于参考项目或需求生成完整的开发文档与实施计划 |
+| [tdad-integration](./tdad-integration/SKILL.md) | 测试驱动代理开发（TDAD），子代理隔离执行 Red-Green-Refactor 循环 |
+| [quick-guide-builder](./quick-guide-builder/SKILL.md) | 基于 MCP 文档工具和源码交叉验证的指南文档构建 |
 | [docling-document-intelligence](./docling-document-intelligence/SKILL.md) | 基于 Docling 解析、转换、分块和分析文档（PDF/DOCX/PPTX/HTML/图片） |
-| [html-doc](./html-doc/SKILL.md)                                   | 生成自包含的富 HTML 文档（报告、幻灯片、看板等）               |
-| [wails3-dev](./wails3-dev/SKILL.md)                               | 基于 Wails v3 的跨平台桌面应用开发（Go 后端 + Web 前端）       |
+| [wails3-dev](./wails3-dev/SKILL.md) | 基于 Wails v3 的跨平台桌面应用开发（Go 后端 + Web 前端） |
 
 ## 如何创建一个优秀的 Skill
 
